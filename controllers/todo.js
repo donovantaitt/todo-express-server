@@ -9,4 +9,10 @@ router.get('/', (req, res) => {
     })
 })
 
+router.post('/new', (req, res) => {
+    Todo.create(req.body, (err, todo) => {
+        err ? res.status(500).send(err) : res.send(todo)
+    })
+})
+
 module.exports = router
