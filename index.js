@@ -5,11 +5,11 @@ const mongoose = require('mongoose')
 
 const todoController = require('./controllers/todo')
 
-const DB = 'todoapp'
+const DB_NAME = process.env.DB_NAME
 const PORT = process.env.PORT || 8000
 
-mongoose.connect(`mongodb://localhost:27017/${DB}`, { useNewUrlParser: true });
-mongoose.connection.once('open', () => console.log(`connected to ${DB} database`));
+mongoose.connect(`mongodb://localhost:27017/${DB_NAME}`, { useNewUrlParser: true });
+mongoose.connection.once('open', () => console.log(`connected to ${DB_NAME} database`));
 
 app.use(express.urlencoded({ extended: true }))
 app.use('/todos', todoController)
