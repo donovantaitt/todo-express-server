@@ -15,4 +15,10 @@ router.post('/new', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+    Todo.findByIdAndRemove(req.params.id, (err, todo) => {
+        err ? res.status(500).send(err) : res.send(todo)
+    })
+})
+
 module.exports = router
